@@ -11,7 +11,8 @@ request.setCharacterEncoding("UTF-8");
 <jsp:setProperty name="user" property="userName" />
 <jsp:setProperty name="user" property="userNickname" />
 <jsp:setProperty name="user" property="userEmail" />
-<jsp:setProperty name="user" property="*" /> <!-- 이걸로 위에꺼 다 퉁침 -->
+<%-- <jsp:setProperty name="user" property="*" /> --%>
+<!-- 이걸로 위에꺼 다 퉁침 -->
 
 <!DOCTYPE html>
 <html>
@@ -22,6 +23,18 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 	<%
+	String userID = null;
+	if (session.getAttribute("userID") != null) {
+		userID = (String) session.getAttribute("userID");
+	}
+	if (userID != null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('이미 로그인이 되어있습니다.')");
+		script.println("location.href = 'main.jsp'");
+		script.println("</script>");
+	}
+
 	if (user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null
 			|| user.getUserNickname() == null || user.getUserEmail() == null) {
 		PrintWriter script = response.getWriter();
@@ -40,10 +53,10 @@ request.setCharacterEncoding("UTF-8");
 			script.println("history.back()");
 			script.println("</script>");
 		} else {
+			session.setAttribute("userID", user.getUserID());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href = 'main.jsp'");
-			script.println("history.back()");
+			script.println("location.href = 'main.jsp'"); /* 회원가입 성공 */
 			script.println("</script>");
 		}
 	}

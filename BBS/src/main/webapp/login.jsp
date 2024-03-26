@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Movie Blending 웹사이트</title>
-<link rel="stylesheet" href="./css/login.css" />
+<link rel="stylesheet" href="css/login.css" />
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css?after" /> --%>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 
 <script>
 
@@ -23,10 +25,11 @@
 					<a href="#">Movie Blending</a>
 				</h1>
 			</div>
+			
 			<!-- 상단 우측 nav바 -->
 			<nav>
 				<ul class="header__menu">
-					<li><a class="header__menu__item" href="mypage.jsp">마이페이지</a></li>
+
 					<li><a class="header__menu__item" href="login.jsp">로그인</a></li>
 					<li><a class="header__menu__item" href="join.jsp">회원가입</a></li>
 				</ul>
@@ -37,7 +40,7 @@
 		<div class="header2">
 			<nav>
 				<ul class="header__menu">
-					<li><a class="header__menu__item active" href="boxoffice.jsp">박스오피스
+					<li><a class="header__menu__item active" href="main.jsp">박스오피스
 					</a></li>
 					<li><a class="header__menu__item" href="view.jsp">영화조회</a></li>
 					<li><a class="header__menu__item" href="board.jsp">영화Talk</a></li>
@@ -58,6 +61,7 @@
 				id="tab-2" type="radio" name="tab" class="sign-up"> <label
 				for="tab-2" class="tab" style="cursor: pointer">회원가입</label>
 
+			<!-- 로그인 -->
 			<div class="login-form">
 					<div class="sign-in-htm">
 					<form method="post" action="loginAction.jsp">					
@@ -85,6 +89,7 @@
 						</div>
 			</div>
 
+			<!-- 회원가입 -->
 			<div class="sign-up-htm">
 				<form method="post" action="joinAction.jsp">	
 				<div class="group">
